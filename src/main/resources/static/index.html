@@ -9,44 +9,50 @@
 <h1>Bestilling av kinobiletter</h1>
 <label> Velg Film: </label>
 <select id="Film">
-    <option value="10">Velg Film Her</option>
-    <option value="10">Eragon</option>
-    <option value="10">Harry Potter and The Philosopher´s Stone</option>
-    <option value="10">The Goonies</option>
-    <option value="10">The last Mimzy</option>
-    <option value="10">The Secret of Moonacre</option>
-    <option value="10">The Great Wall</option>
+    <option value="">Velg Film Her</option>
+    <option>Eragon</option>
+    <option>Harry Potter and The Philosopher´s Stone</option>
+    <option>The Goonies</option>
+    <option>The last Mimzy</option>
+    <option>The Secret of Moonacre</option>
+    <option>The Great Wall</option>
 </select>
+<label id ="feilmeldingfilm" style ="color:red"> </label>
 
 <br>
 <br>
 <table>
     <tr>
-   <td><label>Antall</label></td>
-    <td><input type="number" id="antall" min=0></td>
+        <td><label>Antall</label></td>
+        <td><input type="number" id="antall" min=0></td>
+        <td id="feilmedlingantall" style ="color:red"></td>
     </tr>
     <tr>
         <td><label>Fornavn</label></td>
         <td><input type="text" id="forNavn"></td>
+        <td id="feilmedlingfornavn" style ="color:red"></td>
     </tr>
     <tr>
         <td><label>Etternavn</label></td>
         <td><input type="text" id="etteNavn"></td>
+        <td id="feilmedlingettenavn" style ="color:red"></td>
     </tr>
     <tr>
         <td><label>Telefonnr</label></td>
         <td><input type="tel" id="phoneNumber"></td>
+        <td id="feilmedlingtelefonnr" style ="color:red"></td>
     </tr>
     <tr>
         <td><label>Epost</label></td>
         <td><input type="email" id="email"></td>
+        <td id="feilmedlingemail" style ="color:red"></td>
     </tr>
 </table>
 <br>
-<button onclick="kjopBilletter()">Kjøp billett</button>
+<button onclick="kjopBiletter()">Kjøp billett</button>
 
 <h2>Alle billetter</h2>
 
-<button onclick="slettBillettene()">Slett alle billettene</button>
+<button onclick="slettBilettene()">Slett alle billettene</button>
 </body>
 </html>
