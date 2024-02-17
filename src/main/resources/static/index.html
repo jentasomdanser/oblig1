@@ -17,7 +17,7 @@
     <option>The Secret of Moonacre</option>
     <option>The Great Wall</option>
 </select>
-<label id ="feilmeldingfilm" style ="color:red"> </label>
+<label id="feilmeldingfilm" style="color:red"> </label>
 
 <br>
 <br>
@@ -25,33 +25,35 @@
     <tr>
         <td><label>Antall</label></td>
         <td><input type="number" id="antall" min=0></td>
-        <td id="feilmedlingantall" style ="color:red"></td>
+        <td id="feilmedlingantall" style="color:red"></td>
     </tr>
     <tr>
         <td><label>Fornavn</label></td>
         <td><input type="text" id="forNavn"></td>
-        <td id="feilmedlingfornavn" style ="color:red"></td>
+        <td id="feilmedlingfornavn" style="color:red"></td>
     </tr>
     <tr>
         <td><label>Etternavn</label></td>
         <td><input type="text" id="etteNavn"></td>
-        <td id="feilmedlingettenavn" style ="color:red"></td>
+        <td id="feilmedlingettenavn" style="color:red"></td>
     </tr>
     <tr>
         <td><label>Telefonnr</label></td>
         <td><input type="tel" id="phoneNumber"></td>
-        <td id="feilmedlingtelefonnr" style ="color:red"></td>
+        <td id="feilmedlingtelefonnr" style="color:red"></td>
     </tr>
     <tr>
         <td><label>Epost</label></td>
         <td><input type="email" id="email"></td>
-        <td id="feilmedlingemail" style ="color:red"></td>
+        <td id="feilmedlingemail" style="color:red"></td>
     </tr>
 </table>
 <br>
 <button onclick="kjopBiletter()">Kjøp billett</button>
 
 <h2>Alle billetter</h2>
+<div id="ordreListe">
+</div>
 
 <button onclick="slettBilettene()">Slett alle billettene</button>
 </body>
