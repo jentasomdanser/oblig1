@@ -1,2 +1,3 @@
 Kort beskrivelse av oppgaven
-Vi skulle lage en nettside hvor man kan betille og kjøper biletter til en kino
+I dette repositoriet er det skrevet en kode til en side som selger biletter til filmer som kan gå på en kino.
+Det er brukt HTML og JavaScript for å få siden til å kunne putte ut feilmeldinger hvis det er noe som mangler i inntastings feltene
