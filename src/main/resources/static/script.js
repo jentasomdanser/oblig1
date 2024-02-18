@@ -118,7 +118,7 @@ function kjopBiletter() {
     }
 }
 allfilled = false;
-
+// her slettes bilettene
 function slettBilettene() {
     orderKjop = [];
     document.getElementById("ordreListe").innerHTML = "";
