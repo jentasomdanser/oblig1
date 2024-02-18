@@ -1,97 +1,125 @@
 // lager en array som å putte informasjonen inni
-let orderKjop = []
+let orderKjop = [];
+let altfylt = false;
+let filmvalgt = false;
+let biletterkjopt = false;
+let fornavnfylt = false;
+let etternavnfylt = false;
+let telefonfylt = false;
+let epostfylt = false;
+
 
 //henter verdien fra innputt feltet i html
 function kjopBiletter() {
-    const film = document.getElementById("Film").value;
-    const antallBiletter = document.getElementById("antall").value;
-    const forNavn = document.getElementById("forNavn").value;
-    const etterNavn = document.getElementById("etteNavn").value;
-    const phoneNumber = document.getElementById("phoneNumber").value;
-    const epost = document.getElementById("email").value;
+    let innFilm = document.getElementById("Film").value;
+    let innAntall = document.getElementById("antall").value;
+    let innFornavn = document.getElementById("forNavn").value;
+    let innEtteravn = document.getElementById("etteNavn").value;
+    let innTelefonnr = document.getElementById("phoneNumber").value;
+    let innepost = document.getElementById("email").value;
 
-    // etter man har kjøpt en bilett blir det slettet i fra innputt boksene
-    // slik at man kan legge til et nytt bilett kjøp
-    document.getElementById("Film").value = "";
-    document.getElementById("antall").value = "";
-    document.getElementById("forNavn").value = "";
-    document.getElementById("etteNavn").value = "";
-    document.getElementById("phoneNumber").value = "";
-    document.getElementById("email").value = "";
 
     // lager en varslings melding at et eller flere av feltene er tomme
-    if (!film) {
-        document.getElementById("feilmeldingfilm").innerHTML = "Ingen film valgt";
-    } else if (film) {
+    if (innFilm === "") {
+        document.getElementById("feilmeldingfilm").innerHTML = "<span style='color: red'>" + 'Ingen film valgt' + "</span>";
+        innFilm = "";
+        document.getElementById("film").value = "";
+    } else {
+        filmvalgt = true;
         document.getElementById("feilmeldingfilm").innerHTML = "";
     }
 
-    if (!antallBiletter) {
-        document.getElementById("feilmedlingantall").innerHTML = "Velg et antall biletter";
-    } else if (antallBiletter) {
+    if (isNaN(innAntall) || innAntall === '') {
+        document.getElementById("feilmedlingantall").innerHTML = "<span style='color: red'>" + 'Velg antall biletter' + "</span>";
+        innAntall = "";
+        document.getElementById("antall").value = "";
+    } else {
+        innAntall = document.getElementById("antall").value;
+        biletterkjopt = "";
         document.getElementById("feilmedlingantall").innerHTML = "";
     }
 
-    if (!forNavn) {
-        document.getElementById("feilmedlingfornavn").innerHTML = "Skriv inn fornavn";
-    } else if (forNavn) {
-        document.getElementById("feilmedlingfornavn").innerHTML = "";
+    if (innFornavn === '' || !isNaN(innFornavn)) {
+        document.getElementById("feilmedlingfornavn").innerHTML = "<span style='color: red'>" + 'Skriv inn fornavn' + "</span>";
+        innFornavn = "";
+        document.getElementById("feilmedlingforavn").value = "";
+    } else {
+        innFornavn = document.getElementById("feilmedlingfornavn").value;
+        fornavnfylt = true;
+        document.getElementById("feilmedlingforavn").innerHTML = "";
     }
 
-    if (!etterNavn) {
-        document.getElementById("feilmedlingettenavn").innerHTML = "Skriv inn etternavn";
-    } else if (etterNavn) {
+    if (innEtteravn === '' || !isNaN(innEtteravn)) {
+        document.getElementById("feilmedlingettenavn").innerHTML = "<span style='color: red'>" + 'Skriv inn etternavn' + "</span>";
+        innEtteravn = "";
+        document.getElementById("feilmedlingetternavn").value = "";
+    } else {
+        innEtteravn = document.getElementById("etteNavn").value;
+        etternavnfylt = true;
         document.getElementById("feilmedlingettenavn").innerHTML = "";
     }
 
-    if (!phoneNumber) {
-        document.getElementById("feilmedlingtelefonnr").innerHTML = "Skriv inn telefon nummer";
-    } else if (phoneNumber) {
+    if (innTelefonnr === '' || !document.getElementById("telefonNr").value.match(/^[0-9]{4,13}$/)) {
+        document.getElementById("feilmedlingtelefonnr").innerHTML = "<span style='color: red'>" + 'Skriv inn telefon nummer' + "</span>";
+        innTelefonnr = "";
+        document.getElementById("telefonNr").value = "";
+    } else {
+        innTelefonnr = document.getElementById("telefonNr").value;
+        telefonfylt = true;
         document.getElementById("feilmedlingtelefonnr").innerHTML = "";
     }
-    if (!epost) {
-        document.getElementById("feilmedlingemail").innerHTML = "Skriv inn email";
 
-    } else if (epost) {
+    if (innepost === '' || !document.getElementById("email").value.match(/^[A-Za-z._\-0-9]*[@][A-Za-z]*[.][a-z]{2,4}$/)) {
+        document.getElementById("feilmedlingemail").innerHTML = "<span style='color: red'>" + 'Skriv inn email' + "</span>";
+        innepost = "";
+        document.getElementById("email").value = "";
+
+    } else {
+        innepost = document.getElementById("email").value;
+        epostfylt = true;
         document.getElementById("feilmedlingemail").innerHTML = "";
     }
-    if (film, antallBiletter, forNavn, etterNavn,phoneNumber, epost) {
-        const order = {
-            film,
-            antallBiletter,
-            forNavn,
-            etterNavn,
-            phoneNumber,
-            epost
+    if (filmvalgt && biletterkjopt && fornavnfylt && etternavnfylt && telefonfylt && epostfylt) {
+        altfylt = true;
+    }
+    if (altfylt) {
+        const kjoptBiletter = {
+            film: innFilm,
+            antall: innAntall,
+            forNavn: innFornavn,
+            etterNavn: innEtteravn,
+            telefonNr: innTelefonnr,
+            epost: innepost
         }
-        if (film && antallBiletter && forNavn && etterNavn && phoneNumber && epost) {
-            orderKjop.push(order);
+        orderKjop.push(kjoptBiletter);
+        document.getElementById("film").value = "";
+        document.getElementById("antall").value = "";
+        document.getElementById("forNavn").value = "";
+        document.getElementById("etteNavn").value = "";
+        document.getElementById("telefonNr").value = "";
+        document.getElementById("email").value = "";
+
+        let ut = "<table><tr>" +
+            "<th>Film</th><th>Antall Biletter</th><th>Fornavn</th><th>Etternavn</th><th>Telefon nummer</th><th>Email</th>" +
+            "</tr>";
+        for (let i=0; i<tickets.length; i++) {
+            out += "<tr>";
+            out += "<td>"+tickets[i].choose+"</td><td>"+tickets[i].amount+"</td><td>"+tickets[i].fname+"</td><td>"+tickets[i].lname+"</td><td>"+tickets[i].tel+"</td><td>"+tickets[i].email+"</td>";
+            out += "</tr>";
         }
-        let ut ="<table><tr><th>Film</th><th>Antall</th><th>Fornavn</th> <th>Etternavn</th><th>Telefonnr</th><th>Epost</th></tr>"
-        for (let order of orderKjop){
-            ut+= "<tr><td>"+order.film +"</td><thd>" + order.antallBiletter+ "</thd><th>"+ order.forNavn+"</th><th>" + order.etterNavn+ "</th><th>" + order.phoneNumber +"</th><td>"+ order.epost + "</td></tr>"
-        }
-        ut+= </table>;
-    document.getElementById("ordreListe").innerHTML = ut;
-    console.log(ut);
+        document.getElementById("ordreListe").innerHTML = ut;
+        filmvalgt = false;
+        biletterkjopt = false;
+        fornavnfylt = false;
+        etternavnfylt = false;
+        telefonfylt = false;
+        epostfylt = false;
+        altfylt = false;
     }
 }
+allfilled = false;
 
 function slettBilettene() {
-    const order = {
-        film,
-        antallBiletter,
-        forNavn,
-        etterNavn,
-        phoneNumber,
-        epost
-    }
-    i=0;
-    while (i < orderKjop.length){
-        orderKjop.pop(order);
-    }
-    i++;
-
-    document.getElementById("ordreListe").innerHTML = orderKjop;
-    console.log(orderKjop);
+    orderKjop = [];
+    document.getElementById("ordreListe").innerHTML = "";
 }
