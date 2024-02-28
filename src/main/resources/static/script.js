@@ -14,7 +14,7 @@ function kjopBiletter() {
     let innFilm = document.getElementById("film").value;
     let innAntall = document.getElementById("antall").value;
     let innFornavn = document.getElementById("forNavn").value;
-    let innEtteravn = document.getElementById("etterNavn").value;
+    let innEtternavn = document.getElementById("etterNavn").value;
     let innTelefonnr = document.getElementById("telefonNr").value;
     let innepost = document.getElementById("email").value;
 
@@ -42,19 +42,19 @@ function kjopBiletter() {
     if (innFornavn === '' || !isNaN(innFornavn)) {
         document.getElementById("feilmeldingfornavn").innerHTML = "<span style='color: red'>" + 'Skriv inn fornavn' + "</span>";
         innFornavn = "";
-        document.getElementById("feilmeldingforavn").value = "";
+        document.getElementById("feilmeldingfornavn").value = "";
     } else {
         innFornavn = document.getElementById("feilmeldingfornavn").value;
         fornavnfylt = true;
         document.getElementById("feilmeldingfornavn").innerHTML = "";
     }
 
-    if (innEtteravn === '' || !isNaN(innEtteravn)) {
+    if (innEtternavn === '' || !isNaN(innEtternavn)) {
         document.getElementById("feilmeldingetternavn").innerHTML = "<span style='color: red'>" + 'Skriv inn etternavn' + "</span>";
-        innEtteravn = "";
+        innEtternavn = "";
         document.getElementById("feilmeldingetternavn").value = "";
     } else {
-        innEtteravn = document.getElementById("etterNavn").value;
+        innEtternavn = document.getElementById("etterNavn").value;
         etternavnfylt = true;
         document.getElementById("feilmeldingetternavn").innerHTML = "";
     }
@@ -87,7 +87,7 @@ function kjopBiletter() {
             film: innFilm,
             antall: innAntall,
             forNavn: innFornavn,
-            etteNavn: innEtteravn,
+            etterNavn: innEtternavn,
             telefonNr: innTelefonnr,
             email: innepost
         }
@@ -95,7 +95,7 @@ function kjopBiletter() {
         document.getElementById("film").value = "";
         document.getElementById("antall").value = "";
         document.getElementById("forNavn").value = "";
-        document.getElementById("etteNavn").value = "";
+        document.getElementById("etterNavn").value = "";
         document.getElementById("telefonNr").value = "";
         document.getElementById("email").value = "";
 
@@ -104,7 +104,7 @@ function kjopBiletter() {
             "</tr>";
         for (let i=0; i<orderKjop.length; i++) {
             ut += "<tr>";
-            ut += "<td>"+orderKjop[i].film+"</td><td>"+orderKjop[i].amount+"</td><td>"+orderKjop[i].forNavn+"</td><td>"+orderKjop[i].etteNavn+"</td><td>"+orderKjop[i].telefonNr+"</td><td>"+orderKjop[i].email+"</td>";
+            ut += "<td>"+orderKjop[i].film+"</td><td>"+orderKjop[i].antall+"</td><td>"+orderKjop[i].forNavn+"</td><td>"+orderKjop[i].etterNavn+"</td><td>"+orderKjop[i].telefonNr+"</td><td>"+orderKjop[i].email+"</td>";
             ut += "</tr>";
         }
         document.getElementById("ordreListe").innerHTML = ut;
