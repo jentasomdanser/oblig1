@@ -35,7 +35,7 @@ function kjopBiletter() {
         document.getElementById("antall").value = "";
     } else {
         innAntall = document.getElementById("antall").value;
-        biletterkjopt = "";
+        biletterkjopt = true;
         document.getElementById("feilmeldingantall").innerHTML = "";
     }
 
@@ -82,14 +82,15 @@ function kjopBiletter() {
     if (filmvalgt && biletterkjopt && fornavnfylt && etternavnfylt && telefonfylt && epostfylt) {
         altfylt = true;
     }
+
     if (altfylt) {
         const kjoptBiletter = {
-            film: innFilm,
-            antall: innAntall,
-            forNavn: innFornavn,
-            etterNavn: innEtternavn,
-            telefonNr: innTelefonnr,
-            email: innepost
+            film : innFilm,
+            antall : innAntall,
+            forNavn : innFornavn,
+            etterNavn : innEtternavn,
+            telefonNr : innTelefonnr,
+            email : innepost
         }
         orderKjop.push(kjoptBiletter);
         document.getElementById("film").value = "";
